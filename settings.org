@@ -4,18 +4,19 @@
 * Make it easy to find this file
 
 #+BEGIN_SRC emacs-lisp
-(defun local/find-settings ()
-  "Edit settings.org"
-  (interactive)
-  (find-file (concat user-emacs-directory "settings.org")))
-
-(defun local/reload-emacs ()
-  "Reload emacs"
-  (interactive)
-  (load-file user-init-file))
-
-(global-set-key (kbd "C-c I") 'local/find-settings)
-(global-set-key (kbd "C-c R") 'local/reload-emacs)
+  (defun local/find-settings ()
+    "Edit settings.org"
+    (interactive)
+    (find-file (concat user-emacs-directory "settings.org")))
+  
+  (defun local/reload-emacs ()
+    "Reload emacs"
+    (interactive)
+    (load-file user-init-file))
+  
+  (global-set-key (kbd "C-c I") 'local/find-settings)
+  (global-set-key (kbd "C-c R") 'local/reload-emacs)
+  (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 #+END_SRC
 
 * Overriding some of Emacs's defaults
@@ -192,3 +193,48 @@ overriden by setting =local/leader-key= on your =local-variables.el=.
 
 There's also [[https://github.com/abo-abo/hydra][hydra]], which is used to neatly group a specific set
 of commands/shortcuts.
+
+** Ivy Mode
+#+BEGIN_SRC emacs-lisp
+	(use-package ivy
+      
+    :bind (("M-x" . counsel-M-x)
+             ("C-s" . swiper)
+	     :map ivy-minibuffer-map
+	     ("TAB" . ivy-alt-done)	
+	     ("C-l" . ivy-alt-done)
+	     ("C-j" . ivy-next-line)
+	     ("C-k" . ivy-previous-line)
+	     :map ivy-switch-buffer-map
+	     ("C-k" . ivy-previous-line)
+	     ("C-l" . ivy-done)
+	     ("C-d" . ivy-switch-buffer-kill)
+	     :map ivy-reverse-i-search-map
+	     ("C-k" . ivy-previous-line)
+	     ("C-d" . ivy-reverse-i-search-kill))
+      ("C-c C-c M-x" . execute-extended-command)
+		     :config
+		     (progn
+		       (with-eval-after-load 'ido
+			 (ido-mode -1)
+			 (ivy-mode 1)))
+      
+	       ;; Show recently killed buffers when calling `ivy-switch-buffer'
+	       (setq ivy-use-virtual-buffers t)
+	       (setq ivy-virtual-abbreviate 'full) ;Show the full virtual file paths
+      
+	       (setq ivy-count-format "%d/%d ")
+	       (setq ivy-re-builders-alist '((t . ivy--regex-plus))) ;Default
+	       ;; (setq ivy-re-builders-alist '((t . ivy--regex-fuzzy)))
+      
+	       ;; Do not show "./" and "../" in the `counsel-find-file' completion list
+	       (setq ivy-extra-directories nil)    ;Default value: ("../" "./")
+		     )
+      
+	   (use-package counsel
+	     :defer t
+	     :config
+	;; Show parent directory in the prompt
+	     (ivy-set-prompt 'counsel-ag #'counsel-prompt-function-dir)
+      )
+#+END_SRC
