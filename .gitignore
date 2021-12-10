@@ -1,0 +1,12 @@
+/eshell/
+/straight/
+/.emacs.desktop
+/.emacs.desktop.lock
+/projects
+/transient/
+/history
+/projectile-bookmarks.eld
+/projectile.cache
+/places
+/forge-database.sqlite
+/recentf
