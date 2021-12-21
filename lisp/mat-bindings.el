@@ -27,7 +27,7 @@
     "ee" 'mat/edit-emacs
     "ef" 'eval-defun
     "er" 'eval-region
-    "es" 'eshell
+    ;;"es" 'eshell
     "et" 'vterm
     "f" 'projectile-find-file
     "g" 'magit-status

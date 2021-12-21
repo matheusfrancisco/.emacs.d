@@ -13,3 +13,4 @@ straight/*
 /forge-database.sqlite
 /recentf
 *recentf
+elpa/
