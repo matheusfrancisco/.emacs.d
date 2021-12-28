@@ -11,7 +11,9 @@
 
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
                          ("org" . "https://orgmode.org/elpa/")
-                         ("elpa" . "https://elpa.gnu.org/packages/")))
+                         ("elpa" . "https://elpa.gnu.org/packages/")
+			 ("gnu" . "https://elpa.gnu.org/packages/")))
+
 
 (package-initialize)
 (unless package-archive-contents
@@ -23,6 +25,14 @@
 
 (require 'use-package)
 (setq use-package-always-ensure t)
+
+;; NOTE: The first time you load your configuration on a new machine, you'll
+;; need to run the following command interactively so that mode line icons
+;; display correctly:
+;;
+;; M-x all-the-icons-install-fonts
+
+(use-package all-the-icons)
 
 ;(defvar bootstrap-version)
 ;(let ((bootstrap-file
@@ -40,5 +50,8 @@
 ;(straight-use-package 'use-package)
 
 (use-package command-log-mode)
+
+;(dw/leader-key-def
+;  "eb" '(eval-buffer :which-key "eval region"))
 
 (provide 'mat-bootstrap)
