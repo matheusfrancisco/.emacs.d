@@ -44,7 +44,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(evil-magit magit counsel-projectile projectile hydra general evil-collection evil rainbow-delimiters doom-modeline counsel ivy-rich ivy helpful which-key dracula-theme command-log-mode all-the-icons use-package)))
+   '(forge evil-magit magit counsel-projectile projectile hydra general evil-collection evil rainbow-delimiters doom-modeline counsel ivy-rich ivy helpful which-key dracula-theme command-log-mode all-the-icons use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
