@@ -1,27 +1,10 @@
+
+(setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
+(setq exec-path (append exec-path '("/usr/local/bin")))
+
 (use-package magit
   :custom
-  (vc-follow-symlinks t)
-  :commands (magit-status))
+  (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
 
-(use-package forge
-  :after magit)
-
-(use-package code-review
-  :bind
-  (:map forge-topic-mode-map
-        ("C-c r" . code-review-forge-pr-at-point)))
-
-(use-package diff-hl
-  :defer 1
-  :hook
-  ((magit-pre-refresh . diff-hl-magit-pre-refresh)
-   (magit-post-refresh . diff-hl-magit-post-refresh))
-  :config
-  (global-diff-hl-mode 1))
-
-(use-package git-link
-  :defer t
-  :custom
-  (git-link-use-commit t))
 
 (provide 'mat-git)

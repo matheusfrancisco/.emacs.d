@@ -7,11 +7,13 @@
 (require 'mat-doom-modeline)
 (require 'mat-rainbow)
 (require 'mat-evil)
+(require 'mat-bindings)
+(require 'mat-project)
+(require 'mat-git)
 ;(require 'mat-perf)
 ;(require 'mat-treemacs)
 ;(require 'mat-env)
 ;(require 'mat-session)
-;(require 'mat-git)
 ;(require 'mat-qol)
 ;(require 'mat-backup)
 ;(require 'mat-dired)
@@ -21,7 +23,6 @@
 ;(require 'mat-search)
 ;(require 'mat-js)
 ;(require 'mat-ts)
-;(require 'mat-project)
 ;(require 'mat-md)
 ;(require 'mat-prog)
 ;(require 'mat-profiling)
@@ -38,14 +39,13 @@
 ;(require 'mat-pass)
 ;(require 'mat-http)
 ;(require 'mat-centered)
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(evil-collection evil general helpful which-key use-package rainbow-delimiters lsp-treemacs ivy-rich flycheck dracula-theme doom-modeline counsel company command-log-mode cider)))
+   '(evil-magit magit counsel-projectile projectile hydra general evil-collection evil rainbow-delimiters doom-modeline counsel ivy-rich ivy helpful which-key dracula-theme command-log-mode all-the-icons use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
