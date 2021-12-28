@@ -9,6 +9,8 @@
 (scroll-bar-mode -1)
 (horizontal-scroll-bar-mode -1)
 
+(setq visible-bell nil)
+(setq ring-bell-function 'ignore)
 ;; disable gui dialogs
 (setq use-dialog-box nil
       use-file-dialog nil)

@@ -1,7 +1,6 @@
 ;(setq straight-use-package-by-default t)
 ;(setq straight-default-vc 'git)
 ;(setq straight-vc-git-default-protocol 'ssh)
-(setq visible-bell t)
 (require 'package)
 (setq straight-host-usernames '((github . "matheusfrancisco")
                                 (gitlab . "matheusfrancisco")))
