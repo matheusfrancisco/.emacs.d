@@ -10,6 +10,7 @@
 (require 'mat-project)
 (require 'mat-git)
 (require 'mat-org)
+(require 'mat-lsp)
 ;(require 'mat-perf)
 ;(require 'mat-treemacs)
 ;(require 'mat-env)
@@ -27,7 +28,6 @@
 ;(require 'mat-prog)
 ;(require 'mat-profiling)
 ;(require 'mat-diff)
-;(require 'mat-lsp)
 ;(require 'mat-clojure-lsp)
 ;(require 'mat-service)
 ;(require 'mat-command)
@@ -44,7 +44,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(visual-fill-column org-bullets forge evil-magit magit counsel-projectile projectile hydra general evil-collection evil rainbow-delimiters doom-modeline counsel ivy-rich ivy helpful which-key dracula-theme command-log-mode all-the-icons use-package)))
+   '(lsp-treemacs lsp-ivy lsp-ui typescript-mode lsp-mode visual-fill-column org-bullets forge evil-magit magit counsel-projectile projectile hydra general evil-collection evil rainbow-delimiters doom-modeline counsel ivy-rich ivy helpful which-key dracula-theme command-log-mode all-the-icons use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

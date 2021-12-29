@@ -162,4 +162,11 @@
 (use-package visual-fill-column
   :hook (org-mode . efs/org-mode-visual-fill))
 
+(org-babel-do-load-languages
+  'org-babel-load-languages
+  '((emacs-lisp . t)
+    (python . t)))
+
+(push '("conf-unix" . conf-unix) org-src-lang-modes)
+
 (provide 'mat-org)
