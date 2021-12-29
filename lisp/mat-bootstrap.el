@@ -13,6 +13,7 @@
                          ("elpa" . "https://elpa.gnu.org/packages/")
 			 ("gnu" . "https://elpa.gnu.org/packages/")))
 
+(setq package-check-signature nil)
 
 (package-initialize)
 (unless package-archive-contents
