@@ -25,6 +25,8 @@
 (rune/leader-keys
   "ts" '(hydra-text-scale/body :which-key "scale text"))
 
+(rune/leader-keys
+  "eb" '(eval-buffer :which-key "eval region"))
 ;(global-set-key (kbd "C-M-j") 'counsel-switch-buffer)
 
 ;(general-define-key

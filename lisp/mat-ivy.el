@@ -17,9 +17,6 @@
   :config
   (ivy-mode 1))
 
-(use-package ivy-rich
-  :init
-  (ivy-rich-mode 1))
 
 (use-package counsel
   :bind (("M-x" . counsel-M-x)
@@ -28,5 +25,9 @@
          :map minibuffer-local-map
          ("C-r" . 'counsel-minibuffer-history)))
 
+(use-package ivy-rich
+  :requires (counsel)
+  :init
+  (ivy-rich-mode 1))
 
 (provide 'mat-ivy)
