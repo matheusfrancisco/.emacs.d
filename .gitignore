@@ -14,5 +14,7 @@ straight/*
 /recentf
 *recentf
 elpa/
+.cache/
+.lsp-*
 
 *.el~
