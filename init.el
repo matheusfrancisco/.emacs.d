@@ -11,13 +11,14 @@
 (require 'mat-git)
 (require 'mat-org)
 (require 'mat-lsp)
+(require 'mat-company)
+(require 'mat-eshell) 
+(require 'mat-dirmode)
 ;(require 'mat-perf)
-;(require 'mat-treemacs)
 ;(require 'mat-env)
 ;(require 'mat-session)
 ;(require 'mat-qol)
 ;(require 'mat-backup)
-;(require 'mat-dired)
 ;(require 'mat-minibuffer)
 ;(require 'mat-completion)
 ;(require 'mat-workspace)
@@ -44,7 +45,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(lsp-treemacs lsp-ivy lsp-ui typescript-mode lsp-mode visual-fill-column org-bullets forge evil-magit magit counsel-projectile projectile hydra general evil-collection evil rainbow-delimiters doom-modeline counsel ivy-rich ivy helpful which-key dracula-theme command-log-mode all-the-icons use-package)))
+   '(dired-hide-dotfiles dired-open all-the-icons-dired dired-single eshell-git-prompt evil-nerd-commenter company-box company lsp-treemacs lsp-ivy lsp-ui typescript-mode lsp-mode visual-fill-column org-bullets forge evil-magit magit counsel-projectile projectile hydra general evil-collection evil rainbow-delimiters doom-modeline counsel ivy-rich ivy helpful which-key dracula-theme command-log-mode all-the-icons use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

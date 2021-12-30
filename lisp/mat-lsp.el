@@ -4,7 +4,7 @@
 
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
-  ;:hook (lsp-mode . efs/lsp-mode-setup)
+  :hook (lsp-mode . efs/lsp-mode-setup)
   :init
   (setq lsp-keymap-prefix "C-c l")  ;; Or 'C-l', 's-l'
   :config
@@ -28,5 +28,8 @@
 
 (use-package lsp-treemacs
   :after lsp)
+
+(use-package evil-nerd-commenter
+  :bind ("M-/" . evilnc-comment-or-uncomment-lines))
 
 (provide 'mat-lsp)

@@ -1,17 +1,24 @@
-;(setq straight-use-package-by-default t)
-;(setq straight-default-vc 'git)
-;(setq straight-vc-git-default-protocol 'ssh)
+;;improve startup time
+;; The default is 800 kilobytes.  Measured in bytes.
+(setq gc-cons-threshold (* 50 1000 1000))
+
+(defun efs/display-startup-time ()
+  (message "Emacs loaded in %s with %d garbage collections."
+           (format "%.2f seconds"
+                   (float-time
+                     (time-subtract after-init-time before-init-time)))
+           gcs-done))
+
+(add-hook 'emacs-startup-hook #'efs/display-startup-time)
+
+;;initialize package sources
 (require 'package)
 (setq straight-host-usernames '((github . "matheusfrancisco")
                                 (gitlab . "matheusfrancisco")))
 
-;; Make ESC quit prompts
-(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
-
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
                          ("org" . "https://orgmode.org/elpa/")
-                         ("elpa" . "https://elpa.gnu.org/packages/")
-			 ("gnu" . "https://elpa.gnu.org/packages/")))
+                         ("elpa" . "https://elpa.gnu.org/packages/")))
 
 (setq package-check-signature nil)
 
