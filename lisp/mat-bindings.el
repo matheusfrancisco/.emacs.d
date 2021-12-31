@@ -2,6 +2,10 @@
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
+;rebind C-u
+;Since I let evil-mode take over C-u for buffer scrolling, I need to re-bind the universal-argument command to another key sequence. I’m choosing C-M-u for this purpose.
+(global-set-key (kbd "C-M-u") 'universal-argument)
+
 (use-package general
   :after evil
   :config
@@ -27,11 +31,9 @@
 
 (rune/leader-keys
   "eb" '(eval-buffer :which-key "eval region"))
-;(global-set-key (kbd "C-M-j") 'counsel-switch-buffer)
 
-;(general-define-key
- ;"C-M-j" 'counsel-switch-buffer)
-
+;switch buffer fast
+(global-set-key (kbd "C-M-j") 'counsel-switch-buffer)
 
 ;(defun mat/alternate-buffer ()
  ; "Switch to previous buffer."

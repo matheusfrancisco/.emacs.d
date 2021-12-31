@@ -1,3 +1,7 @@
+;; Avoid constant errors on Windows about the coding system by setting the default to UTF-8.
+;; or any other system
+(set-default-coding-systems 'utf-8)
+
 ;; disable some ui elements
 
 (defvar runemacs/default-font-size 180)
@@ -17,10 +21,7 @@
 
 ;; set a nice monospace font
 ;(set-frame-font "JetBrains Mono-13" nil t)
-
-;; set a nice dark theme
-;(load-theme 'modus-vivendi)
-
+;; Set the font face based on platform
 
 (use-package dracula-theme
   :config (load-theme 'dracula t))
@@ -55,5 +56,14 @@
   ([remap describe-command] . helpful-command)
   ([remap describe-variable] . counsel-describe-variable)
   ([remap describe-key] . helpful-key))
+
+
+; (unless dw/is-termux
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
+(setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
+(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+(setq scroll-step 1) ;; keyboard scroll one line at a time
+(setq use-dialog-box nil)
+;)
 
 (provide 'mat-ui)

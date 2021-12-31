@@ -19,6 +19,7 @@
 (require 'mat-paredit)
 (require 'mat-clojure-lsp)
 (require 'mat-ace)
+(require 'mat-winum)
 
 ;;improve bindings
 
