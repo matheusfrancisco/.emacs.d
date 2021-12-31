@@ -1,4 +1,9 @@
 (setq straight-use-package-by-default t)
+(setq straight-default-vc 'git)
+(setq straight-vc-git-default-protocol 'ssh)
+(setq straight-host-usernames '((github . "matheusfrancisco")
+                                (gitlab . "matheusfrancisco")))
+
 ;;improve startup time
 ;; The default is 800 kilobytes.  Measured in bytes.
 (setq gc-cons-threshold (* 50 1000 1000))
@@ -12,29 +17,27 @@
 
 (add-hook 'emacs-startup-hook #'efs/display-startup-time)
 
-;;initialize package sources
-;(require 'package)
-(setq straight-host-usernames '((github . "matheusfrancisco")
-                                (gitlab . "matheusfrancisco")))
 
-(unless (featurep 'straight)
-  ;; Bootstrap straight.el
-  (defvar bootstrap-version)
-  (let ((bootstrap-file
-         (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
-        (bootstrap-version 5))
-    (unless (file-exists-p bootstrap-file)
-      (with-current-buffer
-          (url-retrieve-synchronously
-           "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
-           'silent 'inhibit-cookies)
-        (goto-char (point-max))
-        (eval-print-last-sexp)))
-    (load bootstrap-file nil 'nomessage)))
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 5))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
 
-;; Use straight.el for use-package expressions
+(setq use-package-enable-imenu-support t)
 (straight-use-package 'use-package)
 
+(eval-when-compile
+  (require 'use-package))
+
+;; use-package installs via straight
 ;; NOTE: The first time you load your configuration on a new machine, you'll
 ;; need to run the following command interactively so that mode line icons
 ;; display correctly:
