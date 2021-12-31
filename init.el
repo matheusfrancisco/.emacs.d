@@ -19,8 +19,9 @@
 ;(require 'mat-diminish)
 
 (require 'mat-paredit)
+
 ;;clojure packages
-;(require 'mat-clojure-lsp)
+(require 'mat-clojure-lsp)
 
 ;;improve bindings
 

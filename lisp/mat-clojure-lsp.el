@@ -1,12 +1,8 @@
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-(package-initialize)
+(use-package clojure-mode
+  :straight t)
 
-(setq package-selected-packages '(clojure-mode lsp-mode cider lsp-treemacs flycheck company))
-
-(when (cl-find-if-not #'package-installed-p package-selected-packages)
-  (package-refresh-contents)
-  (mapc #'package-install package-selected-packages))
+(use-package cider
+  :straight t)
 
 (add-hook 'clojure-mode-hook 'lsp)
 (add-hook 'clojurescript-mode-hook 'lsp)
@@ -15,11 +11,18 @@
 (setq gc-cons-threshold (* 100 1024 1024)
       read-process-output-max (* 1024 1024)
       treemacs-space-between-root-nodes nil
+      lsp-headerline-breadcrumb-enable nil
+      company-idle-delay 0.2
       company-minimum-prefix-length 1
-      lsp-lens-enable t
+      ;; lsp-lens-enable t
+      lsp-file-watch-threshold 10000
       lsp-signature-auto-activate nil
-      ; lsp-enable-indentation nil ; uncomment to use cider indentation instead of lsp
-      ; lsp-enable-completion-at-point nil ; uncomment to use cider completion instead of lsp
-      )
+      lsp-clojure-custom-server-command '("/usr/local/bin/clojure-lsp")
+      ;; I use clj-kondo from master
+      lsp-diagnostics-provider :none
+      lsp-enable-indentation nil ;; uncomment to use cider indentation instead of lsp
+      ;; lsp-enable-completion-at-point nil ;; uncomment to use cider completion instead of lsp
+)
+
 
 (provide 'mat-clojure-lsp)
