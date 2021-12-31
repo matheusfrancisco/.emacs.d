@@ -14,25 +14,16 @@
 (require 'mat-company)
 (require 'mat-eshell)
 (require 'mat-dired)
-
 ;not able to install
 ;(require 'mat-diminish)
-
 (require 'mat-paredit)
-
-;;clojure packages
 (require 'mat-clojure-lsp)
+(require 'mat-ace)
 
 ;;improve bindings
 
 
 ;; python packages
-
 ;; typescript packages
-
 ;;tests packages
-
-
 ;;markdown packages
-
-;;ace
