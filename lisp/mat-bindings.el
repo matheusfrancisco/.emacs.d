@@ -2,8 +2,8 @@
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
-;rebind C-u
-;Since I let evil-mode take over C-u for buffer scrolling, I need to re-bind the universal-argument command to another key sequence. I’m choosing C-M-u for this purpose.
+;;rebind C-u
+;;Since I let evil-mode take over C-u for buffer scrolling, I need to re-bind the universal-argument command to another key sequence. I’m choosing C-M-u for this purpose.
 (global-set-key (kbd "C-M-u") 'universal-argument)
 
 (use-package general
@@ -15,8 +15,11 @@
     :global-prefix "C-SPC")
 
   (rune/leader-keys
-   "t" '(:ignore t :which-key "toggles")
-   "tt" '(counsel-load-theme :which-key "choose theme")))
+    "t" '(:ignore t :which-key "toggles")
+    "tt" '(counsel-load-theme :which-key "choose theme"))
+
+  (general-create-definer rune/ctrl-c-keys
+    :prefix "C-c"))
 
 (use-package hydra)
 
@@ -32,61 +35,43 @@
 (rune/leader-keys
   "eb" '(eval-buffer :which-key "eval region"))
 
-;switch buffer fast
+;;switch buffer fast
 (global-set-key (kbd "C-M-j") 'counsel-switch-buffer)
 
-;(defun mat/alternate-buffer ()
- ; "Switch to previous buffer."
-;  (interactive)
-  ;(switch-to-buffer (other-buffer)))
+(defun mat/format-elisp-buffer ()
+  "Format an emacs-lisp-mode buffer."
+  (interactive)
+  (untabify (point-min) (point-max))
+  (delete-trailing-whitespace (point-min) (point-max))
+  (indent-region (point-min) (point-max)))
 
-;(defun mat/setup-bindings ()
-;  "Setup custom bindings."
-;  (leader-def
- ;   "SPC" 'execute-extended-command
- ;   "TAB" 'mat/alternate-buffer
- ;   "a" 'projectile-toggle-between-implementation-and-test
-  ;  "b" 'consult-buffer
- ;   "c" (general-simulate-key "C-c")
- ;   "d" 'kill-buffer-and-window
- ;   "e" nil
- ;   "eb" 'eval-buffer
- ;   "ee" 'mat/edit-emacs
- ;   "ef" 'eval-defun
- ;   "er" 'eval-region
- ;   ;;"es" 'eshell
- ;   "et" 'vterm
- ;   "f" 'projectile-find-file
- ;   "g" 'magit-status
- ;   "h" nil
- ;   "i" 'consult-imenu
- ;   "j" 'avy-goto-char-timer
- ;;   "k" 'kill-this-buffer
-;    "l" 'consult-line
- ;   "m" 'consult-bookmark
- ;;   "n" nil
- ;   "o" 'delete-other-windows
- ;   "p" 'projectile-command-map
- ;   "q" nil
- ;   "r" 'eglot-rename
- ;   "s" 'save-buffer
- ;   "t" (general-simulate-key "C-x t")
- ;   "u" nil
- ;   "v" (general-simulate-key "C-x 4")
- ;   "w" 'other-window
- ;   "x" nil
- ;   "y" nil
- ;   "z" nil
- ;   ";" 'eval-expression);
+(defun mat/format-buffer ()
+  "Format whole buffer."
+  (interactive)
+  (cond ((string-equal major-mode "json-mode") (json-mode-beautify (point-min) (point-max)))
+        ((string-equal major-mode "sql-mode") (sqlformat-buffer))
+        ((string-equal major-mode "emacs-lisp-mode") (mat/format-elisp-buffer))))
 
-;  (general-nmap
-    ;; goto;
-  ;  "gb" 'xref-pop-marker-stack
- ;   "gr" 'xref-find-references
-  ;  "]e" 'next-error
-  ;  "[e" 'previous-error
-  ;  "]h" 'diff-hl-show-hunk-next
-  ;  "[h" 'diff-hl-show-hunk-previous))
-;(add-hook 'after-init-hook #'mat/setup-bindings)
+(defun mat/edit-emacs ()
+  "Open init.el."
+  (interactive)
+  (find-file (expand-file-name (concat user-emacs-directory "init.el"))))
+
+(defun mat/alternate-buffer ()
+  "Switch to previous buffer."
+  (interactive)
+  (switch-to-buffer (other-buffer)))
+
+(rune/leader-keys
+  "ee" '(mat/edit-emacs :which-key "open init.el")
+  "=" 'mat/format-buffer
+  "g" 'magit-status
+  "s" 'save-buffer
+  "TAB" 'mat/alternate-buffer
+  "k" 'kill-this-buffer
+  "d" 'kill-buffer-and-window
+  "o" 'delete-other-windows
+  ";" 'eval-expression)
+
 
 (provide 'mat-bindings)

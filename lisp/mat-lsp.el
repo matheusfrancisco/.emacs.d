@@ -5,19 +5,12 @@
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
   :hook (lsp-mode . efs/lsp-mode-setup)
+  :bind (("TAB" . completion-at-point))
   :init
   (setq lsp-keymap-prefix "C-c l")  ;; Or 'C-l', 's-l'
   :config
   (lsp-enable-which-key-integration t))
 
-;;typescript mode
-(use-package typescript-mode
-  :mode "\\.ts\\'"
-  :hook (typescript-mode . lsp-deferred)
-  :config
-  (setq typescript-indent-level 2))
-; needs to install lsp ts server
-;npm install -g typescript-language-server typescript
 
 (use-package lsp-ui
   :hook (lsp-mode . lsp-ui-mode)
@@ -31,5 +24,19 @@
 
 (use-package evil-nerd-commenter
   :bind ("M-/" . evilnc-comment-or-uncomment-lines))
+
+
+;;lsp-bindings
+
+(rune/leader-keys
+  "l" '(:ignore t :which-key "lsp")
+  "ld" 'xref-find-definitions
+  "lr" 'xref-find-references
+  "ln" 'lsp-ui-find-next-reference
+  "lp" 'lsp-ui-find-prev-reference
+  "ls" 'counsel-imenu
+  "le" 'lsp-ui-flycheck-list
+  "lS" 'lsp-ui-sideline-mode
+  "lX" 'lsp-execute-code-action)
 
 (provide 'mat-lsp)

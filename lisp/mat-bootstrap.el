@@ -46,7 +46,7 @@
 (use-package all-the-icons)
 
 
-(use-package command-log-mode)
+(use-package command-log-mode :straight t)
 
 
 (provide 'mat-bootstrap)
