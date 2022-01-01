@@ -12,6 +12,7 @@
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 (horizontal-scroll-bar-mode -1)
+(setq initial-frame-alist '((width . 135) (height . 55)))
 
 (setq visible-bell nil)
 (setq ring-bell-function 'ignore)
@@ -20,7 +21,8 @@
       use-file-dialog nil)
 
 ;; set a nice monospace font
-;(set-frame-font "JetBrains Mono-13" nil t)
+;;needs to install
+(set-frame-font "JetBrains Mono-13" nil t)
 ;; Set the font face based on platform
 
 (use-package dracula-theme

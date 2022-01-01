@@ -1,8 +1,28 @@
 (use-package clojure-mode
   :straight t)
 
+(defun mat/local-clojure-indent ()
+  (define-clojure-indent
+    (props/for-all 1)
+    (h/defc 1)
+    (fm/defmutation 1)
+    (db.h/defmutation 1)
+    (match? 0)
+    (flow 1)
+    (facts 1)
+    (fact 1)
+    (dth/let-entities 1)
+    (let-entities 1)
+    (verify 1)
+  ))
+
+(defun local-cider-config ()
+  (add-to-list 'cider-test-defining-forms "defflow"))
+
 (use-package cider
   :straight t)
+
+(add-hook 'clojure-mode-hook 'mat/local-clojure-indent)
 
 (add-hook 'clojure-mode-hook 'lsp)
 (add-hook 'clojurescript-mode-hook 'lsp)

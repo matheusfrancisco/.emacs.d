@@ -94,7 +94,6 @@
    '(("." . "~/tmp/emacs/backups"))))
 
 
-;; python packages
 
 ;; bindings move to bindinds file
 
@@ -122,3 +121,24 @@
 (rune/leader-keys
   :keymaps '(visual)
   "er" '(eval-region :which-key "eval region"))
+
+;;folding 
+(use-package origami
+  :straight t)
+
+;;Abbrev
+(use-package abbrev
+  :straight nil
+  :custom (abbrev-file-name (expand-file-name (concat user-emacs-directory "abbrev_defs")))
+  :hook (prog-mode . abbrev-mode))
+
+;;yasnippet
+;; (use-package yasnippet
+;;   :defer t
+;;   :config
+;;   (setq yas-snippet-dirs
+;;         '("~/.emacs.d/snippets"))
+;;   (yas-global-mode 1))
+
+;;latex mode need to configure yet
+;;
