@@ -1,5 +1,15 @@
 (use-package clojure-mode
-  :straight t)
+  :straight t
+  :config
+  (setq clojure-indent-style :align-arguments
+	clojure-align-forms-automatically nil)
+  (defun mat/clojure-hook-mode ()
+    (paredit-mode +1)
+    (put-clojure-indent 'defui '(1 nil nil (1)))
+    (rainbow-delimiters-mode)
+    (lsp))
+  (add-to-list 'interpreter-mode-alist '("bb" . clojure-mode))
+  (add-hook 'clojure-mode-hook 'mat/clojure-hook-mode))
 
 (defun mat/local-clojure-indent ()
   (define-clojure-indent
@@ -20,13 +30,25 @@
   (add-to-list 'cider-test-defining-forms "defflow"))
 
 (use-package cider
-  :straight t)
+  :straight t
+  :config
+  (setq cider-eval-result-prefix " ;; => "
+	cider-font-lock-dynamically '(macro core function var)
+	cider-repl-pop-to-buffer-on-connect 'display-only
+	cider-boot-parameters "cider repl -w wait"))
 
 (add-hook 'clojure-mode-hook 'mat/local-clojure-indent)
 
-(add-hook 'clojure-mode-hook 'lsp)
+;(add-hook 'clojure-mode-hook 'lsp)
 (add-hook 'clojurescript-mode-hook 'lsp)
 (add-hook 'clojurec-mode-hook 'lsp)
+
+(use-package clj-refactor
+  :config
+  (setq cljr-assume-language-context (quote clj)
+        cljr-clojure-test-declaration "[clojure.test :as test :refer [are deftest is]]")
+  ;; :bind ("/" . cljr-slash)
+  )
 
 (setq gc-cons-threshold (* 100 1024 1024)
       read-process-output-max (* 1024 1024)
