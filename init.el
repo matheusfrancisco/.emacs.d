@@ -142,3 +142,7 @@
 
 ;;latex mode need to configure yet
 ;;
+
+(use-package lua-mode
+  :straight t
+  :mode "\\.lua\\'")

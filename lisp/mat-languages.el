@@ -69,5 +69,27 @@
   )
 
 ;; python packages
+;; (use-package python-mode
+;;   :straight t)
+
+(use-package company-jedi
+  :straight t
+  :config
+  (setq jedi:complete-on-dot t)
+  :hook (python-mode . (lambda () (push 'company-jedi company-backends))))
+
+(use-package lsp-python-ms
+  :straight t
+  :hook (python-mode . (lambda () (lsp-deferred))))
+
+(use-package pippel
+  :straight t)
+
+;;rust
+(use-package rustic
+  :straight t
+  :config
+  (setq rustic-lsp-server 'rls)
+  (setq rustic-format-on-save t))
 
 (provide 'mat-languages)
