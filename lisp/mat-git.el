@@ -2,7 +2,7 @@
 (setq exec-path (append exec-path '("/usr/local/bin")))
 (setq auth-sources '("~/.authinfo.gpg"))
 
-(setq forge-add-default-bindings t)
+;(setq forge-add-default-bindings t)
 
 (use-package magit
   :custom
