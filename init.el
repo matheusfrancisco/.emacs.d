@@ -5,6 +5,7 @@
 (require 'mat-ivy)
 (require 'mat-modeline)
 (require 'mat-rainbow)
+(setq forge-add-default-bindings nil)
 (require 'mat-evil)
 (require 'mat-bindings)
 (require 'mat-project)
