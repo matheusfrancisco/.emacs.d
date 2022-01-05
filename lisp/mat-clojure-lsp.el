@@ -31,22 +31,52 @@
 
 (use-package cider
   :straight t
+  :after clojure
+  :init
+  (setq cider-repl-pop-to-buffer-on-connect t
+	cider-show-error-buffer t
+	cider-auto-select-error-buffer t
+	cider-repl-display-help-banner nil
+	cider-repl-history-file "~/.emacs.d/cider-history.log"
+	cider-repl-wrap-history t)
+  :mode (("\\.edn$\\'" . clojure-mode)
+	 ("\\.boot$\\'" . clojure-mode)
+	 ("\\.cljs.*$\\'" . clojure-mode)
+	 ("\\.lein-env\\'" . clojure-mode))
   :config
   (setq cider-eval-result-prefix " ;; => "
 	cider-font-lock-dynamically '(macro core function var)
 	cider-repl-pop-to-buffer-on-connect 'display-only
 	cider-boot-parameters "cider repl -w wait"))
 
+(add-hook 'cider-repl-mode-hook 'paredit-mode)
 (add-hook 'clojure-mode-hook 'mat/local-clojure-indent)
 
 ;(add-hook 'clojure-mode-hook 'lsp)
 (add-hook 'clojurescript-mode-hook 'lsp)
 (add-hook 'clojurec-mode-hook 'lsp)
+(add-to-list 'auto-mode-alist '("\\.repl\\'" . clojure-mode))
 
 (use-package clj-refactor
+  :after clojure-mode
   :config
   (setq cljr-assume-language-context (quote clj)
         cljr-clojure-test-declaration "[clojure.test :as test :refer [are deftest is]]")
+  ;(set-lookup-handlers! 'clj-refactor-mode nil)
+  (setq cljr-warn-on-eval nil
+        cljr-eagerly-build-asts-on-startup nil
+        cljr-add-ns-to-blank-clj-files nil ; use lsp
+        cljr-magic-require-namespaces
+        '(("s"   . "schema.core")
+          ("gen" . "common-test.generators")
+          ("d-pro" . "common-datomic.protocols.datomic")
+          ("ex" . "common-core.exceptions.core")
+          ("dth" . "common-datomic.test-helpers")
+          ("t-money" . "common-core.types.money")
+          ("t-time" . "common-core.types.time")
+          ("d" . "datomic.api")
+          ("m" . "matcher-combinators.matchers")
+          ("pp" . "clojure.pprint")))
   ;; :bind ("/" . cljr-slash)
   )
 
@@ -68,3 +98,5 @@
 
 
 (provide 'mat-clojure-lsp)
+
+

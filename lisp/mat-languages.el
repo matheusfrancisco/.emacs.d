@@ -92,4 +92,36 @@
   (setq rustic-lsp-server 'rls)
   (setq rustic-format-on-save t))
 
+;;fluter+dart
+(use-package dap-mode
+  :init
+  (require 'dap-chrome)
+  (require 'dap-cpptools)
+  :config
+  (setq dap-enable-mouse-support nil))
+
+(use-package hover
+  :after dart-mode
+  :config
+  (setq hover-hot-reload-on-save t
+        hover-clear-buffer-on-hot-restart t
+        hover-screenshot-path "$HOME/Pictures"))
+
+(defvar use-local-dart nil)
+
+(use-package lsp-dart
+  :config
+  (when-let (dart-exec (executable-find "dart"))
+    (let ((dart-sdk-path (-> dart-exec
+                             file-chase-links
+                             file-name-directory
+                             directory-file-name
+                             file-name-directory)))
+      (setq lsp-dart-dap-flutter-hot-reload-on-save t)
+      (if use-local-dart
+          (setq lsp-dart-sdk-dir "/Users/matheus.machado/sdk-flutter/bin/cache/dart-sdk" ;;macOS
+                lsp-dart-flutter-sdk-dir "/Users/matheus.machado/sdk-flutter") ;;macOS
+        (setq lsp-dart-sdk-dir dart-sdk-path)))))
+
 (provide 'mat-languages)
+
