@@ -16,18 +16,20 @@
   (setq lsp-keymap-prefix "C-c l")  ;; Or 'C-l', 's-l'
   :config
   (lsp-enable-which-key-integration t)
-  (setq lsp-clojure-custom-server-command '("bash" "-c" "~/dev/clojure-lsp/clojure-lsp") ;; Remove it if you don't develop clojure-lsp in your machine
-          lsp-headerline-breadcrumb-enable nil
-          lsp-lens-enable t
-          lsp-enable-file-watchers t
-          lsp-signature-render-documentation nil
-          lsp-signature-function 'lsp-signature-posframe
-          lsp-semantic-tokens-enable t
-          lsp-idle-delay 0.3
-          lsp-use-plists nil
-          lsp-completion-sort-initial-results t ; check if should keep as t
-          lsp-completion-no-cache t
-          lsp-completion-use-last-result nil))
+  (setq
+   ;; lsp-clojure-custom-server-command '("bash" "-c" "~/dev/clojure-lsp/clojure-lsp") ;; Remove it if you don't develop clojure-lsp in your machine
+        lsp-clojure-custom-server-command '("/usr/local/bin/clojure-lsp")
+        lsp-headerline-breadcrumb-enable nil
+        lsp-lens-enable t
+        lsp-enable-file-watchers t
+        lsp-signature-render-documentation nil
+        lsp-signature-function 'lsp-signature-posframe
+        lsp-semantic-tokens-enable t
+        lsp-idle-delay 0.3
+        lsp-use-plists nil
+        lsp-completion-sort-initial-results t ; check if should keep as t
+        lsp-completion-no-cache t
+        lsp-completion-use-last-result nil))
   
 
 

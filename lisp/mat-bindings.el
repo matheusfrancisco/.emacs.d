@@ -1,7 +1,5 @@
 
-;; Make ESC quit prompts
-(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
-
+;; Make ESC quit prompts (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 ;;rebind C-u
 ;;Since I let evil-mode take over C-u for buffer scrolling, I need to re-bind the universal-argument command to another key sequence. I’m choosing C-M-u for this purpose.
 (global-set-key (kbd "C-M-u") 'universal-argument)
@@ -71,7 +69,19 @@
   "k" 'kill-this-buffer
   "d" 'kill-buffer-and-window
   "o" 'delete-other-windows
-  ";" 'eval-expression)
+  ";" 'eval-expression
+  )
 
+(rune/ctrl-c-keys
+  "C-h" 'evil-window-left
+  "C-j" 'evil-window-down
+  "C-k" 'evil-window-up
+  "C-l" 'evil-window-right
+
+  "C-S-h" 'evil-window-move-far-left
+  "C-S-j" 'evil-window-move-very-bottom
+  "C-S-k" 'evil-window-move-very-top
+  "C-S-l" 'evil-window-move-far-right
+  )
 
 (provide 'mat-bindings)
