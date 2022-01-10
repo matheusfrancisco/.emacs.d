@@ -16,5 +16,6 @@ auto-save-list/*
 /elpa/
 /.cache/
 /.lsp-*
+*/workspaces
 
 */*.el~

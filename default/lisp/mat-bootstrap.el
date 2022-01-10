@@ -37,14 +37,6 @@
 (eval-when-compile
   (require 'use-package))
 
-;; use-package installs via straight
-;; NOTE: The first time you load your configuration on a new machine, you'll
-;; need to run the following command interactively so that mode line icons
-;; display correctly:
-;;
-;; M-x all-the-icons-install-fonts
-(use-package all-the-icons)
-
 
 (use-package command-log-mode :straight t)
 

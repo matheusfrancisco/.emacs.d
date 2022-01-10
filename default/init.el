@@ -3,7 +3,6 @@
 (require 'mat-bootstrap)
 (require 'mat-ui)
 (require 'mat-ivy)
-(require 'mat-modeline)
 (require 'mat-rainbow)
 (setq forge-add-default-bindings nil)
 (require 'mat-evil)
@@ -138,7 +137,7 @@
    :straight t
    :config
    (setq yas-snippet-dirs
-         '("~/.emacs.d/snippets"))
+         '("~/.emacs.multi/default/snippets"))
    (yas-global-mode 1))
 
 (use-package yasnippet-snippets
@@ -151,3 +150,5 @@
   :straight t
   :mode "\\.lua\\'")
 
+
+(require 'mat-modeline)
