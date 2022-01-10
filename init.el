@@ -133,13 +133,16 @@
   :custom (abbrev-file-name (expand-file-name (concat user-emacs-directory "abbrev_defs")))
   :hook (prog-mode . abbrev-mode))
 
-;;yasnippet
-;; (use-package yasnippet
-;;   :defer t
-;;   :config
-;;   (setq yas-snippet-dirs
-;;         '("~/.emacs.d/snippets"))
-;;   (yas-global-mode 1))
+;yasnippet
+ (use-package yasnippet
+   :straight t
+   :config
+   (setq yas-snippet-dirs
+         '("~/.emacs.d/snippets"))
+   (yas-global-mode 1))
+
+(use-package yasnippet-snippets
+  :after yasnippet)
 
 ;;latex mode need to configure yet
 ;;
