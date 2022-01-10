@@ -1,0 +1,9 @@
+(use-package perspective
+  :straight t
+  :bind (("C-x k" . persp-kill-buffer*))
+  :custom
+  (persp-initial-frame-name "Main")
+  :init
+  (persp-mode))
+
+(provide 'mat-perspectives)
