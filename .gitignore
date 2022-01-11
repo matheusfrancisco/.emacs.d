@@ -18,4 +18,5 @@ auto-save-list/*
 /.lsp-*
 */workspaces
 
+doom-emacs/
 */*.el~
