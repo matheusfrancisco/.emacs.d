@@ -61,3 +61,9 @@
 ;; (unpin! lsp-mode)
 (unpin! lsp-ui)
 (unpin! lsp-dart)
+
+
+(package! map :pin "bb50dba")
+;(unpin! iedit)
+;(unpin! evil-multiedit)
+;(unpin! evil)

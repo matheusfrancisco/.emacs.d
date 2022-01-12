@@ -291,3 +291,4 @@
 
 (set-modeline! :main 'default)
 
+(load! "+bindings")
