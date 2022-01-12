@@ -48,3 +48,16 @@
 ;(unpin! pinned-package another-pinned-package)
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
+
+(package! scss-mode)
+(package! treemacs-all-the-icons)
+(package! paredit)
+(package! posframe)
+(package! yaml-mode)
+(package! company-quickhelp)
+
+(unpin! treemacs)
+(unpin! lsp-treemacs)
+;; (unpin! lsp-mode)
+(unpin! lsp-ui)
+(unpin! lsp-dart)
