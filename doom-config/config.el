@@ -52,11 +52,11 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 ;;
-;(let ((nudev-emacs-path "~/dev/nu/nudev/ides/emacs/"))
-;  (when (file-directory-p nudev-emacs-path)
-;    (add-to-list 'load-path nudev-emacs-path)
-;    (require 'nu nil t)
-;    (require 'nu-datomic-query nil t)))
+(let ((nudev-emacs-path "~/dev/nu/nudev/ides/emacs/"))
+  (when (file-directory-p nudev-emacs-path)
+    (add-to-list 'load-path nudev-emacs-path)
+    (require 'nu nil t)
+    (require 'nu-datomic-query nil t)))
 ;(add-to-list 'default-frame-alist '(fullscreen . maximized))
 ;
 
@@ -209,7 +209,8 @@
 (use-package! lsp-mode
   :commands lsp
   :config
-  (setq lsp-clojure-custom-server-command '("bash" "-c" "~/usr/local/bin/clojure-lsp") ;; Remove it if you don't develop clojure-lsp in your machine
+  (setq
+  ;; lsp-clojure-custom-server-command '("bash" "-c" "~/usr/local/bin/clojure-lsp") ;; Remove it if you don't develop clojure-lsp in your machine
         lsp-headerline-breadcrumb-enable nil
         lsp-lens-enable t
         lsp-enable-file-watchers t

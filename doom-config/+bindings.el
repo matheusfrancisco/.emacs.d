@@ -31,7 +31,8 @@
 (defun mat/edit-config-emacs ()
   "Open init.el."
   (interactive)
-  (find-file (expand-file-name (concat user-emacs-directory "config.el"))))
+  (find-file (expand-file-name (concat user-emacs-directory "../doom-config/config.el"))))
+
 
 (map! :nvi 
 
