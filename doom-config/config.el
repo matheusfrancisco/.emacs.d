@@ -126,9 +126,12 @@
         cider-show-error-buffer t ;'only-in-repl
         cider-font-lock-dynamically nil ; use lsp semantic tokens
         cider-eldoc-display-for-symbol-at-point nil ; use lsp
+        ;;cider-repl-display-in-current-window t
+        cider-repl-pop-to-buffer-on-connect nil
         cider-prompt-for-symbol nil)
+
   (set-popup-rule! "*cider-test-report*" :side 'right :width 0.4)
-  (set-popup-rule! "^\\*cider-repl" :side 'bottom :quit nil)
+  (set-popup-rule! "^\\*cider-repl" :quit nil)
   (set-lookup-handlers! 'cider-mode nil) ; use lsp
   (add-hook 'cider-mode-hook (lambda () (remove-hook 'completion-at-point-functions #'cider-complete-at-point))) ; use lsp
   )
