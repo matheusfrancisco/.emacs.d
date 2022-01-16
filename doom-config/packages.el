@@ -55,6 +55,8 @@
 (package! posframe)
 (package! yaml-mode)
 (package! company-quickhelp)
+;;(package! treemacs-persp)
+
 
 (unpin! treemacs)
 (unpin! lsp-treemacs)
@@ -64,6 +66,6 @@
 
 
 (package! map :pin "bb50dba")
-;(unpin! iedit)
-;(unpin! evil-multiedit)
-;(unpin! evil)
+(unpin! iedit)
+(unpin! evil-multiedit)
+(unpin! evil)

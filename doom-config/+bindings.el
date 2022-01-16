@@ -54,7 +54,14 @@
       :desc "Find file in dotfiles"
       "f t" #'find-in-dotfiles
 
+      :desc "Treemacs open currenty project"
+      "T o" #'treemacs-display-current-project-exclusively
 
+      :desc "Treemacs select folder"
+      "T s" #'treemacs-select-directory
+
+      :desc "Treemacs toogle"
+      "T t" #'treemacs
       )
 
 (after! paredit
