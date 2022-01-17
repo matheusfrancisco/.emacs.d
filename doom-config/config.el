@@ -64,6 +64,8 @@
 (add-to-list 'auto-mode-alist '("\\.ect\\'" . html-mode))
 (add-to-list 'auto-mode-alist '("\\.ejs\\'" . html-mode))
 (add-to-list 'auto-mode-alist '("\\.xtend\\'" . java-mode))
+;;(add-to-list 'auto-mode-alist '("\\.dart\\'" . dart-mode))
+
 (add-hook 'html-mode-hook #'turn-off-auto-fill)
 (add-hook 'markdown-mode-hook #'turn-off-auto-fill)
 (add-hook 'dart-mode-hook (lambda () (setq left-fringe-width 16)))
@@ -83,7 +85,7 @@
 
  read-process-output-max (* 1024 1024)
 
- projectile-project-search-path '("~/dev/" "~/dev/nu/" "~/dev/nu/mini-meta-repo/packages" "~/m/")
+ projectile-project-search-path '("~/dev/" "~/dev/nu/" "~/dev/nu/mini-meta-repo/" "~/dev/nu/mini-meta-repo/packages/" "~/m/")
  projectile-enable-caching nil
 
  evil-split-window-below t
@@ -181,22 +183,15 @@
         hover-clear-buffer-on-hot-restart t
         hover-screenshot-path "$HOME/Pictures"))
 
+
 (defvar use-local-dart nil)
 
 (use-package! lsp-dart
   :config
-  (when-let (dart-exec (executable-find "dart"))
-    (let ((dart-sdk-path (-> dart-exec
-                             file-chase-links
-                             file-name-directory
-                             directory-file-name
-                             file-name-directory)))
-      (setq lsp-dart-dap-flutter-hot-reload-on-save t)
-      (if use-local-dart
-          (setq lsp-dart-sdk-dir "/Users/matheus.machado/sdk-flutter/bin/cache/dart-sdk"
-                lsp-dart-flutter-sdk-dir "/Users/matheus.machado/sdk-flutter")
-        (setq lsp-dart-sdk-dir dart-sdk-path)))))
-
+  (setq lsp-dart-dap-flutter-hot-reload-on-save t)
+  (when use-local-dart
+    (setq lsp-dart-sdk-dir (expand-file-name "~/flutter/bin/cache/dart-sdk")
+          lsp-dart-flutter-sdk-dir (expand-file-name "~/flutter"))))
 
 (use-package! lsp-java
   :after lsp
@@ -297,7 +292,8 @@
 
 (after! projectile
   (add-to-list 'projectile-project-root-files-bottom-up "pubspec.yaml")
-  (add-to-list 'projectile-project-root-files-bottom-up "BUILD"))
+  (add-to-list 'projectile-project-root-files-bottom-up "BUILD")
+  (add-to-list 'projectile-project-root-files-bottom-up "project.clj"))
 
 (put 'narrow-to-region 'disabled nil)
 
