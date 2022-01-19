@@ -104,7 +104,7 @@
 
  +format-on-save-enabled-modes '(dart-mode)
  evil-collection-setup-minibuffer t
- org-directory "~/Google Drive/My Drive "
+ org-directory "~/Google Drive/My Drive/org"
 
  )
 
@@ -283,8 +283,9 @@
   ;;            #'outline-show-all)
   )
 
+
 (use-package! paredit
-  :hook ((clojure-mode . paredit-mode)
+  :hook '((clojure-mode . paredit-mode)
          (emacs-lisp-mode . paredit-mode)))
 
 (use-package! treemacs-all-the-icons
@@ -315,5 +316,6 @@
     (+modeline-checker ("" +modeline-checker "    "))))
 
 (set-modeline! :main 'default)
+
 
 (load! "+bindings")
