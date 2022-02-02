@@ -106,6 +106,8 @@
  evil-collection-setup-minibuffer t
  org-directory "~/Google Drive/My Drive/org"
 
+ mode-require-final-newline t
+
  )
 
 (set-popup-rule! "\\*LSP Dart tests\\*" :height 0.3)

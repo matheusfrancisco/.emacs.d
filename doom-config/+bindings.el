@@ -48,6 +48,15 @@
 
 (map! :leader
 
+      :desc "Goto char"
+      "j c" #'avy-goto-char
+
+      :desc "Goto word"
+      "j w" #'avy-goto-word-0
+
+      :desc "Goto line"
+      "j l" #'avy-goto-line
+
       :desc "Open config.el"
       "f T" #'mat/edit-config-emacs
 
