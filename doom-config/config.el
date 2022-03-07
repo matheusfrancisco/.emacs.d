@@ -52,7 +52,7 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 ;;
-(let ((nudev-emacs-path "~/dev/nu/nudev/ides/emacs/"))
+(let ((nudev-emacs-path "~/m/dev/ides/emacs/"))
   (when (file-directory-p nudev-emacs-path)
     (add-to-list 'load-path nudev-emacs-path)
     (require 'nu nil t)
